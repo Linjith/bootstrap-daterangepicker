@@ -1,5 +1,9 @@
 # Date Range Picker for Bootstrap
 
+This is a fork on https://github.com/dangrossman/bootstrap-daterangepicker
+Amended the scrip to emit dateclick event.
+
+
 ![Improvely.com](http://i.imgur.com/LbAMf3D.png)
 
 This date range picker component for Bootstrap creates a dropdown menu from which a user can
