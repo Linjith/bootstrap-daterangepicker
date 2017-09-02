@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-daterangepicker-ext",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Date range picker component for Bootstrap",
   "main": "daterangepicker.js",
   "style": "daterangepicker.css",
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/Linjith/bootstrap-daterangepicker.git"
   },
-  "author": "Linjith Kunnon - Forked repo from -Dan Grossman <dan@dangrossman.info> (http://www.dangrossman.info)",
+  "author": "Linjith Kunnon",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Linjith/bootstrap-daterangepicker/issues"
