@@ -1,6 +1,6 @@
 # Date Range Picker for Bootstrap
 
-This is a fork on https://github.com/dangrossman/bootstrap-daterangepicker
+This is a fork of https://github.com/dangrossman/bootstrap-daterangepicker
 Amended the scrip to emit dateclick event.
 
 
