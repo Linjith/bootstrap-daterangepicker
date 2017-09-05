@@ -1233,6 +1233,7 @@
                 this.rightCalendar.month.subtract(1, 'month');
             }
             this.updateCalendars();
+            e.stopPropagation();
         },
 
         clickNext: function(e) {
@@ -1245,6 +1246,7 @@
                     this.leftCalendar.month.add(1, 'month');
             }
             this.updateCalendars();
+            e.stopPropagation();
         },
 
         hoverDate: function(e) {
