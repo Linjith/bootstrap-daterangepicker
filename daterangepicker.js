@@ -1146,12 +1146,13 @@
 
             //if picker is attached to a text input, update it
             this.updateElement();
-
-            $(document).off('.daterangepicker');
-            $(window).off('.daterangepicker');
-            this.container.hide();
-            this.element.trigger('hide.daterangepicker', this);
-            this.isShowing = false;
+            if (this.hideOnApply) {
+                $(document).off('.daterangepicker');
+                $(window).off('.daterangepicker');
+                this.container.hide();
+                this.element.trigger('hide.daterangepicker', this);
+                this.isShowing = false;
+            }
         },
 
         toggle: function (e) {
@@ -1408,7 +1409,7 @@
         },
 
         clickApply: function (e) {
-            if (this.hideOnApply)this.hide();
+            this.hide();
             this.element.trigger('apply.daterangepicker', this);
         },
 
