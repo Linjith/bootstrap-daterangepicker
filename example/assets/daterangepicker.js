@@ -41,7 +41,7 @@
         this.autoApply = false;
         this.hideOnApply = true;
         this.highlightOnHover = false;
-        this.disableApplyButton = true;
+        this.disableApplyButton = false;
         this.singleDatePicker = false;
         this.showDropdowns = false;
         this.showWeekNumbers = false;
@@ -1043,7 +1043,7 @@
             this.container.find('input[name=daterangepicker_start]').val(this.startDate.format(this.locale.format));
             if (this.endDate)
                 this.container.find('input[name=daterangepicker_end]').val(this.endDate.format(this.locale.format));
-            if (!this.disableApplyButton) {
+            if (this.disableApplyButton) {
                 if (this.singleDatePicker || (this.endDate && (this.startDate.isBefore(this.endDate) || this.startDate.isSame(this.endDate)))) {
                     this.container.find('button.applyBtn').removeAttr('disabled');
                 } else {
