@@ -246,6 +246,14 @@
                 this.endDate = this.startDate.clone();
         }
 
+        if (typeof options.disableApplyButton === 'boolean') {
+            this.disableApplyButton = options.disableApplyButton;
+        }
+
+        if (typeof options.highlightOnHover === 'boolean') {
+            this.highlightOnHover = options.highlightOnHover;
+        }
+
         if (typeof options.timePicker === 'boolean')
             this.timePicker = options.timePicker;
 
@@ -1285,7 +1293,6 @@
             if (this.highlightOnHover) {
                 if (!this.endDate) {
                     this.container.find('.calendar tbody td').each(function (index, el) {
-
                         //skip week numbers, only look at dates
                         if ($(el).hasClass('week')) return;
 
@@ -1623,6 +1630,24 @@
             this.container.remove();
             this.element.off('.daterangepicker');
             this.element.removeData();
+        },
+
+        clearStartDateSelection: function (clearRageSelection) {
+            if (clearRageSelection)
+                this.clearRangeSelection();
+            this.container.find('td').removeClass('start-date');
+        },
+
+        clearEndDateSelection: function (clearRangeSelection) {
+            if (clearRageSelection)
+                this.clearRangeSelection();
+            this.container.find('td').removeClass('end-date');
+        },
+
+        clearRangeSelection: function () {
+            this.container.find('.calendar tbody td').each(function (index, el) {
+                if ($(el).hasClass('in-range')) $(el).removeClass('in-range');
+            });
         }
 
     };
