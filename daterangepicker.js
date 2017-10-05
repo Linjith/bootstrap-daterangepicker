@@ -40,6 +40,8 @@
         this.dateLimit = false;
         this.autoApply = false;
         this.hideOnApply = true;
+        this.highlightOnHover = false;
+        this.disableApplyButton = true;
         this.singleDatePicker = false;
         this.showDropdowns = false;
         this.showWeekNumbers = false;
@@ -121,7 +123,7 @@
                 '</div>' +
                 '<div class="ranges">' +
                 '<div class="range_inputs">' +
-                '<button class="applyBtn" disabled="disabled" type="button"></button> ' +
+                '<button class="applyBtn"  type="button"></button> ' +
                 '<button class="cancelBtn" type="button"></button>' +
                 '</div>' +
                 '</div>' +
@@ -1033,13 +1035,13 @@
             this.container.find('input[name=daterangepicker_start]').val(this.startDate.format(this.locale.format));
             if (this.endDate)
                 this.container.find('input[name=daterangepicker_end]').val(this.endDate.format(this.locale.format));
-
-            if (this.singleDatePicker || (this.endDate && (this.startDate.isBefore(this.endDate) || this.startDate.isSame(this.endDate)))) {
-                this.container.find('button.applyBtn').removeAttr('disabled');
-            } else {
-                this.container.find('button.applyBtn').attr('disabled', 'disabled');
+            if (!this.disableApplyButton) {
+                if (this.singleDatePicker || (this.endDate && (this.startDate.isBefore(this.endDate) || this.startDate.isSame(this.endDate)))) {
+                    this.container.find('button.applyBtn').removeAttr('disabled');
+                } else {
+                    this.container.find('button.applyBtn').attr('disabled', 'disabled');
+                }
             }
-
         },
 
         move: function () {
@@ -1280,25 +1282,27 @@
             var leftCalendar = this.leftCalendar;
             var rightCalendar = this.rightCalendar;
             var startDate = this.startDate;
-            if (!this.endDate) {
-                this.container.find('.calendar tbody td').each(function (index, el) {
+            if (this.highlightOnHover) {
+                if (!this.endDate) {
+                    this.container.find('.calendar tbody td').each(function (index, el) {
 
-                    //skip week numbers, only look at dates
-                    if ($(el).hasClass('week')) return;
+                        //skip week numbers, only look at dates
+                        if ($(el).hasClass('week')) return;
 
-                    var title = $(el).attr('data-title');
-                    var row = title.substr(1, 1);
-                    var col = title.substr(3, 1);
-                    var cal = $(el).parents('.calendar');
-                    var dt = cal.hasClass('left') ? leftCalendar.calendar[row][col] : rightCalendar.calendar[row][col];
+                        var title = $(el).attr('data-title');
+                        var row = title.substr(1, 1);
+                        var col = title.substr(3, 1);
+                        var cal = $(el).parents('.calendar');
+                        var dt = cal.hasClass('left') ? leftCalendar.calendar[row][col] : rightCalendar.calendar[row][col];
 
-                    if ((dt.isAfter(startDate) && dt.isBefore(date)) || dt.isSame(date, 'day')) {
-                        $(el).addClass('in-range');
-                    } else {
-                        $(el).removeClass('in-range');
-                    }
+                        if ((dt.isAfter(startDate) && dt.isBefore(date)) || dt.isSame(date, 'day')) {
+                            $(el).addClass('in-range');
+                        } else {
+                            $(el).removeClass('in-range');
+                        }
 
-                });
+                    });
+                }
             }
 
         },
