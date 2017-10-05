@@ -246,6 +246,14 @@
                 this.endDate = this.startDate.clone();
         }
 
+        if (typeof options.disableApplyButton === 'boolean') {
+            this.disableApplyButton = options.disableApplyButton;
+        }
+
+        if (typeof options.highlightOnHover === 'boolean') {
+            this.highlightOnHover = options.highlightOnHover;
+        }
+
         if (typeof options.timePicker === 'boolean')
             this.timePicker = options.timePicker;
 
